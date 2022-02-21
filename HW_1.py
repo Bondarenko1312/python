@@ -72,7 +72,12 @@ print(','.join(n for n in st if n.isdigit()))
 # st = 'as 23 fdfdg544 34' #введена строка
 # 23, 544, 34              #вивело в консолі
 st = 'as 23 fdfdg544 34'
-print(','.join(n for n in st if n.isdigit()))
+num = ''
+for n in st:
+    if n.isdigit():
+        num = num + n
+        print("num is " + num)
+
 
 # list comprehension
 
@@ -82,15 +87,14 @@ print(','.join(n for n in st if n.isdigit()))
 # пример:
 # ['H', 'E', 'L', 'L', 'O', ',', ' ', 'W', 'O', 'R', 'L', 'D']
 greeting = 'Hello, world'
-print(','.join(w for w in greeting and greeting.upper()))
+greeting_upper = [greeting.upper()for greeting_upper in greeting]
+print(greeting_upper)
 
 # 2) с диапазона от 0-50 записать в лист только не парные числа, при этом возвести их в квадрат
 # пример:
 # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, ...]
-nums_1 = 1
-while nums_1 <= 50:
-    nums_1 += 1
-    print(pow(nums_1, 2))
+nums_1 = [i * i for i in range(50)]
+print(nums_1)
 
 # function
 #
@@ -107,35 +111,33 @@ def func_1():
     func_1()
 
 
-a = 1
-b = 3
-c = 5
 
-
-def func_2():
+def func_2(a,b,c):
     if a > b and a > c:
         print(a)
     elif b > a and b > c:
         print(b)
     elif c > a and c > b:
         print(c)
-func_2()
+func_2(1,2,3)
 
 
-def func_3():
+def func_3(a,b,c):
     if a < b and a < c:
         print(a)
     elif b < a and b < c:
         print(b)
     elif c < a and c < b:
         print(c)
-func_3()
+func_3(5,10,15)
 
-def func_4():
-    nums = [44,12,546,784,24,12,6,7,345,2]
-    num_min = min(nums)
-    print("smallest:", num_min)
-func_4()
+def func_4(*args):
+    min = args[0]
+    for i in args[1:]:
+        if i < min:
+            min = i
+    return min
+print(func_4(12,546,784,24,12,6,7,345,2))
 
 
 
@@ -157,7 +159,7 @@ max_num()
 def sum_num():
     print(sum(fib_nums))
 sum_num()
-def arithmetic_num():
+def arithmetic_num(*args):
     print(sum(fib_nums) / len(fib_nums))
 arithmetic_num()
 
